@@ -1,0 +1,53 @@
+
+
+1. Create a New Database named "LibraryManagementSystem."
+
+CREATE DATABASE LibraryManagementSystem;
+USE LibraryManagementSystem;
+
+
+2. Define and create tables for books, borrowers, transactions, etc., within the 
+"LibraryManagementSystem" database.
+
+Books:
+
+CREATE TABLE Books (
+    BookID INT AUTO_INCREMENT PRIMARY KEY,
+    Title VARCHAR(255) NOT NULL,
+    Author VARCHAR(255) NOT NULL,
+    ISBN VARCHAR(13) NOT NULL,
+    AvailableCopies INT,
+    TotalCopies INT
+);
+
+
+
+Borrowers:
+
+CREATE TABLE Borrowers (
+    BorrowerID INT AUTO_INCREMENT PRIMARY KEY,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    Email VARCHAR(100),
+    PhoneNumber VARCHAR(15)
+);
+
+
+
+Transactions:
+
+CREATE TABLE Transactions (
+    TransactionID INT AUTO_INCREMENT PRIMARY KEY,
+    BookID INT,
+    BorrowerID INT,
+    BorrowDate DATE,
+    ReturnDate DATE,
+    FOREIGN KEY (BookID) REFERENCES Books(BookID),
+    FOREIGN KEY (BorrowerID) REFERENCES Borrowers(BorrowerID)
+);
+
+
+
+3. Define the structure of each table, including columns (e.g., book title, author, borrower ID), 
+data types, and primary keys.
+4. Add Sample data, save and execute
